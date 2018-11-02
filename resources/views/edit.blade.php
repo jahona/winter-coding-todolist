@@ -8,7 +8,7 @@
                 <div class="d-flex justify-content-center card-header">할 일 수정하기</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('update', ['id' => $post->id]) }}">
+                    <form id="editForm" method="POST" action="{{ route('update', ['id' => $post->id]) }}">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Title</label>
@@ -68,5 +68,24 @@
         $('.timepicker').datetimepicker({
             format: 'Y-m-d H:i:s'
         });
+
+        function validate() {
+            var title = document.getElementById("title").value;
+            var content = document.getElementById("content").value;
+
+            if(title == "" || content == "") return false;
+            return true;
+        }
+
+        document.getElementById("editForm").onsubmit = function() {
+            var result = validate();
+
+            if(result) {
+                return true;
+            } else {
+                alert('제목 혹은 내용을 입력해주세요.');
+                return false;
+            }
+        };
     };
 </script>
