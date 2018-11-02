@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('priority');
+            $table->unsignedInteger('priority')->default(1);
             $table->boolean('is_completed')->default(false);
             $table->boolean('is_deleted')->default(false);
             $table->timestamp('due_date')->nullable();
