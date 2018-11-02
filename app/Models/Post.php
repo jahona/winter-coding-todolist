@@ -15,7 +15,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'user_id', 'priority', 'is_completed',
+        'title', 'content', 'user_id', 'priority', 'is_completed', 'due_date',
     ];
 
     /**
@@ -25,5 +25,12 @@ class Post extends Model
      */
     protected $hidden = [
 
+    ];
+
+    protected $casts = [
+        'user_id' => 'int',
+        'priority' => 'int',
+        'is_completed' => 'bool',
+        'due_date' => 'datetime',
     ];
 }

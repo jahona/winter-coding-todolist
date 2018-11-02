@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('priority');
             $table->boolean('is_completed')->default(false);
             $table->boolean('is_deleted')->default(false);
+            $table->timestamp('due_date')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->foreign('user_id')->references('id')->on('users');

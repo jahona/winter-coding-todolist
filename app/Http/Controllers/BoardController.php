@@ -47,7 +47,8 @@ class BoardController extends Controller
             'title' => $request->input('title'),
             'content' => $request->input('content'),
             'user_id' => Auth::id(),
-            'priority' => $request->input('priority')
+            'priority' => $request->input('priority'),
+            'due_date' => $request->input('due_date'),
         ]);
 
         return redirect()->route('list');
