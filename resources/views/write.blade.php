@@ -73,7 +73,15 @@
             var title = document.getElementById("title").value;
             var content = document.getElementById("content").value;
 
-            if(title == "" || content == "") return false;
+            if(title == "" || content == "") {
+                alert('제목 혹은 내용을 입력해주세요.');
+                return false;
+            }
+            if(title.length > 100 || content.length>100) {
+                alert('너무 깁니다.. 좀만 더 간결히 적어주세요');
+                return false;
+            }
+
             return true;
         }
 
@@ -83,7 +91,6 @@
             if(result) {
                 return true;
             } else {
-                alert('제목 혹은 내용을 입력해주세요.');
                 return false;
             }
         };
