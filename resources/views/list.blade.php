@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            <div class="d-flex justify-content-center mt-lg-4">
+                <h1>현재시간 : <span id="clock"></span></h1>
+            </div>
             <table class="table mt-lg-4">
                 <thead class="table">
                     <tr>
@@ -13,6 +16,7 @@
                         <td align="center" width="50%">Content</td>
                         <td align="center">Edit</td>
                         <td align="center">Delete</td>
+                        <td align="center">due date</td>
                         <td align="center">complete</td>
                     </tr>
                 </thead>
@@ -41,6 +45,18 @@
                         <td align="center">{{ $post->content }}</td>
                         <td align="center"><a href="{{ route('edit', ['id' => $post->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
                         <td align="center"><a href="{{ route('delete', ['id' => $post->id]) }}"><i class="fas fa-trash-alt"></i></a></td>
+                        @php
+                            $now = date('Y-m-d H:i:s');
+                        @endphp
+                        @if (!empty($post->due_date))
+                            @if ($post->due_date > $now)
+                                <td align="center">{{ $post->due_date }}</td>
+                            @else
+                                <td align="center"><i class="fas fa-clock"></i>{{ __(' time expired') }}</td>
+                            @endif
+                        @else
+                            <td align="center"></td>
+                        @endif
                         <td align="center"><input type="checkbox" name="checkbox" value="{{ $post->id }}" aria-label="Checkbox for following text input" {{ $post->is_completed ? 'checked' : ''}}></td>
                     </tr>
                 @endforeach
@@ -80,6 +96,19 @@
 
 <script type="text/javascript">
     window.onload = function() {
+        var now;
+        function currentDateTime() {
+            var clock = document.getElementById("clock");
+
+            now = new Date();
+            var nowtime = now.getFullYear() + "년 " + (now.getMonth()+1) + "월 " + now.getDate() + "일 " + now.getHours() + "시 " + now.getMinutes() + "분 " + now.getSeconds() + "초";
+
+            clock.innerHTML = nowtime;
+            setTimeout(currentDateTime, 1000);
+        };
+
+        currentDateTime();
+
         $('input[name=checkbox]').change(function(){
             if($(this).is(':checked')) {
                 (function(obj) {
