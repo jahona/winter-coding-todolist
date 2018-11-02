@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+<style>
+    .table td {
+        text-align: center;
+    }
+</style>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -11,13 +16,13 @@
                 <thead class="table">
                     <tr>
                         {{--<td align="center" scope="col">#</td>--}}
-                        <td align="center">Priority</td>
-                        <td align="center">Title</td>
-                        <td align="center" width="50%">Content</td>
-                        <td align="center">Edit</td>
-                        <td align="center">Delete</td>
-                        <td align="center">due date</td>
-                        <td align="center">complete</td>
+                        <td class="align-middle">Priority</td>
+                        <td class="align-middle">Title</td>
+                        <td class="align-middle" width="50%">Content</td>
+                        <td class="align-middle">Edit</td>
+                        <td class="align-middle">Delete</td>
+                        <td class="align-middle">due date</td>
+                        <td class="align-middle">complete</td>
                     </tr>
                 </thead>
                 <tbody class="table">
@@ -29,35 +34,35 @@
                         {{--<td align="center" scope="row">{{ $post->id }}</td>--}}
 
                         @if ($post->priority == '1')
-                            <td align="center"><span class="btn btn-danger">1순위</span></td>
+                            <td class="align-middle"><span class="btn btn-danger">1순위</span></td>
                         @endif
                         @if ($post->priority == '2')
-                            <td align="center"><span class="btn btn-warning">2순위</span></td>
+                            <td class="align-middle"><span class="btn btn-warning">2순위</span></td>
                         @endif
                         @if ($post->priority == '3')
-                            <td align="center"><span class="btn btn-info">3순위</span></td>
+                            <td class="align-middle"><span class="btn btn-info">3순위</span></td>
                         @endif
                         @if ($post->priority == '4')
-                            <td align="center"><span class="btn btn-dark">4순위</span></td>
+                            <td class="align-middle"><span class="btn btn-dark">4순위</span></td>
                         @endif
 
-                        <td align="center">{{ $post->title }}</td>
-                        <td align="center">{{ $post->content }}</td>
-                        <td align="center"><a href="{{ route('edit', ['id' => $post->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
-                        <td align="center"><a href="{{ route('delete', ['id' => $post->id]) }}"><i class="fas fa-trash-alt"></i></a></td>
+                        <td class="align-middle">{{ $post->title }}</td>
+                        <td class="align-middle">{{ $post->content }}</td>
+                        <td class="align-middle"><a href="{{ route('edit', ['id' => $post->id]) }}"><i class="fas fa-pencil-alt"></i></a></td>
+                        <td class="align-middle"><a href="{{ route('delete', ['id' => $post->id]) }}"><i class="fas fa-trash-alt"></i></a></td>
                         @php
                             $now = date('Y-m-d H:i:s');
                         @endphp
                         @if (!empty($post->due_date))
                             @if ($post->due_date > $now)
-                                <td align="center">{{ $post->due_date }}</td>
+                                <td class="align-middle">{{ $post->due_date }}</td>
                             @else
-                                <td align="center"><i class="fas fa-clock"></i>{{ __(' time expired') }}</td>
+                                <td class="align-middle"><i class="fas fa-clock"></i>{{ __(' time expired') }}</td>
                             @endif
                         @else
-                            <td align="center"></td>
+                            <td class="align-middle"></td>
                         @endif
-                        <td align="center"><input type="checkbox" name="checkbox" value="{{ $post->id }}" aria-label="Checkbox for following text input" {{ $post->is_completed ? 'checked' : ''}}></td>
+                        <td class="align-middle"><input type="checkbox" name="checkbox" value="{{ $post->id }}" aria-label="Checkbox for following text input" {{ $post->is_completed ? 'checked' : ''}}></td>
                     </tr>
                 @endforeach
                 </tbody>
