@@ -24,4 +24,6 @@ Route::get('/board/write', 'BoardController@write')->name('write');
 Route::post('/board/save', 'BoardController@taskSave')->name('save');
 Route::get('/board/edit/{id}', 'BoardController@edit')->name('edit');
 Route::post('/board/update/{id}', 'BoardController@update')->name('update');
+Route::get('/board/complete/{id}', 'BoardController@isCompletedCheck');
 Route::get('/board/delete/{id}', 'BoardController@delete')->name('delete');
+Route::get('/board/clear', 'BoardController@clear')->name('clear');

@@ -87,9 +87,36 @@ class BoardController extends Controller
         return redirect()->route('list');
     }
 
+    public function isCompletedCheck(Request $request, $id)
+    {
+        $post = DB::table('posts')->where('id', $id)->where('is_deleted', false)->first();
+        if(is_null($post)) abort(404);
+
+        $isCompleted = true;
+
+        if($request->query('isChecked') == 'unChecked') {
+            $isCompleted = false;
+        }
+
+        DB::table('posts')->where('id', $id)->update([
+            'is_completed' => $isCompleted,
+        ]);
+
+        return response()->json(['success' => true]);
+    }
+
     public function delete($id)
     {
         DB::table('posts')->where('id', $id)->update([
+            'is_deleted' => true
+        ]);
+
+        return redirect()->route('list');
+    }
+
+    public function clear()
+    {
+        DB::table('posts')->where('user_id', Auth::id())->where('is_completed', true)->update([
             'is_deleted' => true
         ]);
 
