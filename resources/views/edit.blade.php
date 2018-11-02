@@ -47,6 +47,11 @@
                             </div>
                         </div>
 
+                        <div style="position: relative">
+                            <strong>Due date:</strong>
+                            <input class="timepicker form-control" type="text" name="due_date">
+                        </div>
+
                         <div class="mt-lg-4 d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">할 일 수정</button>
                         </div>
@@ -57,3 +62,11 @@
     </div>
 </div>
 @endsection
+
+<script type="text/javascript">
+    window.onload = function() {
+        $('.timepicker').datetimepicker({
+            format: 'Y-m-d H:i:s'
+        });
+    };
+</script>

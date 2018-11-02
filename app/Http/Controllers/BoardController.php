@@ -75,14 +75,12 @@ class BoardController extends Controller
         $post = DB::table('posts')->where('id', $id)->where('is_deleted', false)->first();
         if(is_null($post)) abort(404);
 
-        $post->content = $request->input('content');
-        $post->title = $request->input('title');
-        $post->priority = $request->input('priority');
-
         DB::table('posts')->where('id', $id)->update([
-            'content' => $request->input('content'),
             'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'user_id' => Auth::id(),
             'priority' => $request->input('priority'),
+            'due_date' => $request->input('due_date'),
         ]);
 
         return redirect()->route('list');
