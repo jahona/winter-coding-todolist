@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('list') }}">GO MY TO DO LIST</a>
+                    <a href="{{ route('list') }}"><p style="font-size: larger">GO MY TO DO LIST</p></a>
                 </div>
             </div>
         </div>
