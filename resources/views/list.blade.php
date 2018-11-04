@@ -9,9 +9,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="d-flex justify-content-center mt-lg-4">
-                <h1>현재시간 : <span id="clock"></span></h1>
-            </div>
+            {{--<div class="d-flex justify-content-center mt-lg-4">--}}
+                {{--<h1>현재시간 : <span id="clock"></span></h1>--}}
+            {{--</div>--}}
             <table class="table mt-lg-4">
                 <thead class="table">
                     <tr>
@@ -112,7 +112,7 @@
             setTimeout(currentDateTime, 1000);
         };
 
-        currentDateTime();
+        // currentDateTime();
 
         $('input[name=checkbox]').change(function(){
             if($(this).is(':checked')) {
