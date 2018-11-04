@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('list') }}">Go todolist</a>
+                    <a href="{{ route('list') }}">GO MY TO DO LIST</a>
                 </div>
             </div>
         </div>
