@@ -121,7 +121,8 @@
                     if(result) {
                         var val = obj.val();
 
-                        var url = "http://localhost:8000/board/complete/" + val + "?isChecked=checked";
+                        var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+                        var url = full + "/board/complete/" + val + "?isChecked=checked";
 
                         var xhr = new XMLHttpRequest();
                         xhr.open("GET", url, true);
@@ -150,7 +151,8 @@
                     if(result) {
                         var val = obj.val();
 
-                        var url = "http://localhost:8000/board/complete/" + val + "?isChecked=unChecked";
+                        var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
+                        var url = full + "/board/complete/" + val + "?isChecked=unChecked";
 
                         var xhr = new XMLHttpRequest();
                         xhr.open("GET", url, true);
